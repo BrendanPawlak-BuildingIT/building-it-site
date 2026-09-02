@@ -1,12 +1,15 @@
 ---
-import { NAV_LINKS } from '../data/site';
+import { NAV_LINKS, SITE } from '../data/site';
 ---
 
 <header class="site-header" id="site-header">
-  <div class="nav-pill">
-    <a href="/#top" class="logo">Building<span>IT</span></a>
+  <div class="wrap header-inner">
+    <a href="/#top" class="logo" aria-label="Homepage">
+      <img class="logo-mark" src="/brand-icon.png" alt="" width="28" height="28" />
+      <span class="logo-text">Building<span>IT</span></span>
+    </a>
 
-    <nav class="main-nav" id="main-nav">
+    <nav class="main-nav" id="main-nav" aria-label="Primary">
       {NAV_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
     </nav>
 
@@ -15,9 +18,9 @@ import { NAV_LINKS } from '../data/site';
       <button
         class="nav-toggle"
         id="nav-toggle"
-        aria-label="Toggle menu"
+        aria-label="Open menu"
         aria-expanded="false"
-        aria-controls="main-nav"
+        aria-controls="mobile-nav"
       >
         <span></span><span></span><span></span>
       </button>
@@ -25,25 +28,83 @@ import { NAV_LINKS } from '../data/site';
   </div>
 </header>
 
+<div
+  class="mobile-nav"
+  id="mobile-nav"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobile navigation"
+  aria-hidden="true"
+>
+  <div class="mobile-nav-top">
+    <a href="/#top" class="logo" aria-label="Homepage">
+      <img class="logo-mark" src="/brand-icon.png" alt="" width="28" height="28" />
+      <span class="logo-text">Building<span>IT</span></span>
+    </a>
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      >
+        <line x1="4" y1="4" x2="20" y2="20"></line>
+        <line x1="20" y1="4" x2="4" y2="20"></line>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="mobile-nav-links" aria-label="Mobile primary">
+    {NAV_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+
+  <div class="mobile-nav-footer">
+    <a href="/#start" class="btn btn-primary btn-block">Start My Website</a>
+    <a href={SITE.phoneHref} class="btn btn-ghost btn-block">{SITE.phoneDisplay}</a>
+  </div>
+</div>
+
 <script>
   const navToggle = document.getElementById('nav-toggle');
-  const siteHeader = document.getElementById('site-header');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileNavClose = document.getElementById('mobile-nav-close');
+
+  function openMobileNav() {
+    mobileNav?.classList.add('open');
+    mobileNav?.setAttribute('aria-hidden', 'false');
+    navToggle?.classList.add('open');
+    navToggle?.setAttribute('aria-expanded', 'true');
+    navToggle?.setAttribute('aria-label', 'Close menu');
+    document.body.classList.add('nav-locked');
+  }
 
   function closeMobileNav() {
-    siteHeader?.classList.remove('nav-open');
+    mobileNav?.classList.remove('open');
+    mobileNav?.setAttribute('aria-hidden', 'true');
     navToggle?.classList.remove('open');
     navToggle?.setAttribute('aria-expanded', 'false');
+    navToggle?.setAttribute('aria-label', 'Open menu');
+    document.body.classList.remove('nav-locked');
   }
 
-  if (navToggle && siteHeader) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = siteHeader.classList.toggle('nav-open');
-      navToggle.classList.toggle('open', isOpen);
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-    });
+  navToggle?.addEventListener('click', () => {
+    if (mobileNav?.classList.contains('open')) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  });
 
-    document.querySelectorAll('.main-nav a').forEach((link) => {
-      link.addEventListener('click', closeMobileNav);
-    });
-  }
+  mobileNavClose?.addEventListener('click', closeMobileNav);
+
+  document.querySelectorAll('.mobile-nav-links a').forEach((link) => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav?.classList.contains('open')) {
+      closeMobileNav();
+    }
+  });
 </script>

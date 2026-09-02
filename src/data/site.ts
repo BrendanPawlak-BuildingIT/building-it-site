@@ -33,6 +33,12 @@ export const NAV_LINKS: NavLink[] = [
   { href: '/#faq', label: 'FAQ' },
 ];
 
+/** Quick Links column in the footer — the main nav plus a final link to the contact form. */
+export const FOOTER_NAV_LINKS: NavLink[] = [
+  ...NAV_LINKS,
+  { href: '/#start', label: 'Get Started' },
+];
+
 export const LEGAL_LINKS: NavLink[] = [
   { href: '/privacy', label: 'Privacy Policy' },
   { href: '/terms', label: 'Terms of Service' },
