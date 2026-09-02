@@ -116,13 +116,16 @@ export const PROBLEMS: ProblemItem[] = [
 export interface ServiceItem {
   title: string;
   description: string;
+  /** True for the one-time build phase; the rest are the ongoing $200/month plan. */
+  oneTime?: boolean;
 }
 
 export const SERVICES: ServiceItem[] = [
   {
-    title: 'Website',
+    title: 'Website Build',
     description:
-      'A professional website designed around your business and the services you actually offer.',
+      'A new website or a rebuild of your existing one, scoped and built around your business. Priced individually — see Pricing below.',
+    oneTime: true,
   },
   {
     title: 'Hosting',
@@ -177,7 +180,6 @@ export const STEPS: StepItem[] = [
 ];
 
 export const PRICE_FEATURES: string[] = [
-  'Professional website',
   'Hosting',
   'Maintenance',
   'Updates',
@@ -196,11 +198,16 @@ export const FAQS: FaqItem[] = [
   {
     question: 'What does $200/month include?',
     answer:
-      'A professional website, hosting, maintenance, updates, technical management, forms, and mobile optimization — the full managed website service in one monthly price.',
+      'Hosting, maintenance, updates, technical management, forms, and mobile optimization — everything it takes to keep your website online and running smoothly, in one monthly price.',
+  },
+  {
+    question: 'How much does a new website cost?',
+    answer:
+      'It depends on your business — new builds and rebuilds are scoped and quoted individually based on what you need. Once your site is live, hosting and management is $200/month.',
   },
   {
     question: 'Is there a discount for paying upfront?',
-    answer: `Yes. We also build new websites and rebuild existing ones as standalone projects, priced based on the site itself. If you pay your first ${PREPAY_MONTHS} months of the managed plan upfront ($${PREPAY_UPFRONT_TOTAL}), you get ${PREPAY_DISCOUNT_PERCENT}% off that build project — up to $${PREPAY_UPFRONT_TOTAL} off.`,
+    answer: `Yes. If you pay your first ${PREPAY_MONTHS} months of hosting upfront ($${PREPAY_UPFRONT_TOTAL}), you get ${PREPAY_DISCOUNT_PERCENT}% off your website build — up to $${PREPAY_UPFRONT_TOTAL} off.`,
   },
   {
     question: 'Do I need to manage the website myself?',
@@ -222,7 +229,7 @@ export const FAQS: FaqItem[] = [
   {
     question: 'Can you rebuild my existing website?',
     answer:
-      'Yes. We can use your existing business information, branding, services, photos, and other assets when rebuilding your site.',
+      'Yes. Rebuilds are scoped and quoted just like a new build, using your existing business information, branding, services, and photos.',
   },
   {
     question: 'Do I need to know anything about websites?',

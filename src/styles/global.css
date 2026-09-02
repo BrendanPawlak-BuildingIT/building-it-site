@@ -959,6 +959,21 @@ body.nav-locked {
 }
 .service-list h3 {
   font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.service-tag {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mist);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 3px 10px;
 }
 .service-list p {
   color: var(--text-body);
@@ -1054,11 +1069,20 @@ body.nav-locked {
   margin: 0 auto;
 }
 
+.price-scope {
+  margin-top: clamp(32px, 5vw, 48px);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
 .price-display {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin: clamp(28px, 5vw, 48px) 0;
+  margin: 8px 0 clamp(28px, 5vw, 48px);
 }
 .price-currency {
   font-family: var(--font-display);
@@ -1119,6 +1143,13 @@ body.nav-locked {
   .price-list li::before {
     display: none;
   }
+}
+
+.price-build-note {
+  margin-top: 28px;
+  max-width: 480px;
+  font-size: 0.88rem;
+  color: var(--text-body-on-dark);
 }
 
 /* ============ FAQ ============ */

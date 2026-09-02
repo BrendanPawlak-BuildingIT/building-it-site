@@ -1,14 +1,21 @@
 ---
-import { PRICE_FEATURES, SITE } from '../data/site';
+import {
+  PREPAY_DISCOUNT_PERCENT,
+  PREPAY_MONTHS,
+  PREPAY_UPFRONT_TOTAL,
+  PRICE_FEATURES,
+  SITE,
+} from '../data/site';
 ---
 
 <section class="section pricing" id="pricing">
   <div class="wrap pricing-inner">
     <p class="eyebrow eyebrow-light" data-reveal>Pricing</p>
     <h2 class="display-sm dark-heading" data-reveal>
-      One website. One monthly price.<br />We handle the technical stuff.
+      We build your website.<br />Then we host and manage it.
     </h2>
 
+    <p class="price-scope" data-reveal>Hosting &amp; Management</p>
     <div class="price-display" data-reveal>
       <span class="price-currency">$</span><span class="price-figure">{SITE.price}</span><span
         class="price-suffix">/month</span
@@ -20,5 +27,12 @@ import { PRICE_FEATURES, SITE } from '../data/site';
     </ul>
 
     <a href="#start" class="btn btn-primary btn-large" data-reveal>Start My Website</a>
+
+    <p class="price-build-note" data-reveal>
+      Need a new website or a rebuild? That's a separate project, scoped and quoted around your
+      business. Pay {PREPAY_MONTHS} months of hosting upfront (${PREPAY_UPFRONT_TOTAL}) and get {
+        PREPAY_DISCOUNT_PERCENT
+      }% off it — up to ${PREPAY_UPFRONT_TOTAL} off.
+    </p>
   </div>
 </section>

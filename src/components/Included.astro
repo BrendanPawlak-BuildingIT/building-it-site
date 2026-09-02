@@ -6,9 +6,7 @@ import { SERVICES } from '../data/site';
   <div class="wrap">
     <div class="section-head" data-reveal>
       <p class="eyebrow">What&rsquo;s Included</p>
-      <h2 class="display-sm">
-        Everything it takes to keep a<br />website running, handled for you.
-      </h2>
+      <h2 class="display-sm">Everything it takes to build, host, and manage your website.</h2>
     </div>
 
     <ul class="service-list">
@@ -16,7 +14,10 @@ import { SERVICES } from '../data/site';
         SERVICES.map((service, i) => (
           <li data-reveal>
             <span class="service-num">{String(i + 1).padStart(2, '0')}</span>
-            <h3>{service.title}</h3>
+            <h3>
+              {service.title}
+              {service.oneTime && <span class="service-tag">One-time</span>}
+            </h3>
             <p>{service.description}</p>
           </li>
         ))
