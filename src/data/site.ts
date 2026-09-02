@@ -101,7 +101,7 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     title: 'Changes take forever',
-    description: 'A simple update to hours or services turns into a weeks-long back-and-forth.',
+    description: 'A simple update to hours or services takes weeks of back-and-forth emails.',
   },
   {
     title: 'Too many vendors',
@@ -123,32 +123,28 @@ export interface ServiceItem {
 export const SERVICES: ServiceItem[] = [
   {
     title: 'Website Build',
-    description:
-      'A new website or a rebuild of your existing one, scoped and built around your business. Priced individually — see Pricing below.',
+    description: 'A new website, or a rebuild of your current one. Priced based on what you need.',
     oneTime: true,
   },
   {
     title: 'Hosting',
-    description:
-      'Hosting and deployment handled for you. No accounts to manage, no bills to track down.',
+    description: 'We host your website. No accounts to manage, no bills to track down.',
   },
   {
     title: 'Maintenance',
-    description:
-      'Ongoing technical maintenance and troubleshooting when something needs attention.',
+    description: 'We fix problems when something breaks.',
   },
   {
     title: 'Updates',
-    description:
-      'Content and information updated as your business changes — new services, hours, or photos.',
+    description: 'We update your site when your business changes — new services, hours, or photos.',
   },
   {
     title: 'Forms',
-    description: 'Lead and estimate forms set up, tested, and kept working so requests reach you.',
+    description: 'We set up and test your contact and estimate forms so requests reach you.',
   },
   {
     title: 'Technical Management',
-    description: 'Domains, DNS, SSL, and deployment handled in the background by Building IT.',
+    description: 'We handle your domain, DNS, and SSL in the background.',
   },
 ];
 
@@ -165,8 +161,7 @@ export const STEPS: StepItem[] = [
   },
   {
     title: 'We Build Your Website',
-    description:
-      'Building IT creates the website around your actual business, not generic placeholder content.',
+    description: 'We build a real website for your business. No generic templates.',
   },
   {
     title: 'Review & Launch',
@@ -174,8 +169,7 @@ export const STEPS: StepItem[] = [
   },
   {
     title: 'We Keep Managing It',
-    description:
-      'Building IT continues handling hosting, maintenance, updates, and technical work going forward.',
+    description: 'We keep handling hosting, maintenance, updates, and technical work.',
   },
 ];
 
@@ -198,16 +192,16 @@ export const FAQS: FaqItem[] = [
   {
     question: 'What does $200/month include?',
     answer:
-      'Hosting, maintenance, updates, technical management, forms, and mobile optimization — everything it takes to keep your website online and running smoothly, in one monthly price.',
+      'Hosting, maintenance, updates, technical management, forms, and mobile optimization. All for one monthly price.',
   },
   {
     question: 'How much does a new website cost?',
     answer:
-      'It depends on your business — new builds and rebuilds are scoped and quoted individually based on what you need. Once your site is live, hosting and management is $200/month.',
+      'It depends on what you need. We look at your business and give you a price before we start. After that, hosting and management is $200/month.',
   },
   {
     question: 'Is there a discount for paying upfront?',
-    answer: `Yes. If you pay your first ${PREPAY_MONTHS} months of hosting upfront ($${PREPAY_UPFRONT_TOTAL}), you get ${PREPAY_DISCOUNT_PERCENT}% off your website build — up to $${PREPAY_UPFRONT_TOTAL} off.`,
+    answer: `Yes. Pay your first ${PREPAY_MONTHS} months of hosting upfront ($${PREPAY_UPFRONT_TOTAL}) and get ${PREPAY_DISCOUNT_PERCENT}% off your website build — up to $${PREPAY_UPFRONT_TOTAL} off.`,
   },
   {
     question: 'Do I need to manage the website myself?',
@@ -215,26 +209,24 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: 'Can you update the website for me?',
-    answer:
-      "Yes. You can request reasonable updates as your business changes, and we'll take care of them.",
+    answer: "Yes. Tell us what changed and we'll update the site.",
   },
   {
     question: 'Do you handle hosting?',
-    answer: 'Yes. Hosting and deployment are managed as part of the service.',
+    answer: 'Yes. Hosting is part of the $200/month plan.',
   },
   {
     question: 'Can you use my existing domain?',
-    answer: 'Yes. Existing domains can generally be connected to your new website.',
+    answer: 'Yes. We can connect your existing domain to your new site.',
   },
   {
     question: 'Can you rebuild my existing website?',
     answer:
-      'Yes. Rebuilds are scoped and quoted just like a new build, using your existing business information, branding, services, and photos.',
+      'Yes. We quote a rebuild the same way as a new site, using your existing content and photos.',
   },
   {
     question: 'Do I need to know anything about websites?',
-    answer:
-      "No. This service is specifically designed for business owners who don't want to deal with the technical side of a website.",
+    answer: "No. This is for business owners who don't want to deal with the technical side.",
   },
   {
     question: 'What kinds of businesses do you work with?',
