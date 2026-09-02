@@ -20,6 +20,16 @@ export const SITE = {
   legalUpdated: 'September 2, 2026',
 } as const;
 
+/**
+ * Prepay offer: pay this many months of the managed plan upfront and get this
+ * % off a website build project, capped at the upfront amount itself (e.g. 3
+ * months upfront = $600, so up to $600 comes off the build project — not an
+ * unlimited 25%, and not a discount on the monthly plan itself).
+ */
+export const PREPAY_MONTHS = 3;
+export const PREPAY_DISCOUNT_PERCENT = 25;
+export const PREPAY_UPFRONT_TOTAL = SITE.price * PREPAY_MONTHS;
+
 export interface NavLink {
   href: string;
   label: string;
@@ -187,6 +197,10 @@ export const FAQS: FaqItem[] = [
     question: 'What does $200/month include?',
     answer:
       'A professional website, hosting, maintenance, updates, technical management, forms, and mobile optimization — the full managed website service in one monthly price.',
+  },
+  {
+    question: 'Is there a discount for paying upfront?',
+    answer: `Yes. We also build new websites and rebuild existing ones as standalone projects, priced based on the site itself. If you pay your first ${PREPAY_MONTHS} months of the managed plan upfront ($${PREPAY_UPFRONT_TOTAL}), you get ${PREPAY_DISCOUNT_PERCENT}% off that build project — up to $${PREPAY_UPFRONT_TOTAL} off.`,
   },
   {
     question: 'Do I need to manage the website myself?',
