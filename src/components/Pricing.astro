@@ -1,0 +1,24 @@
+---
+import { PRICE_FEATURES, SITE } from '../data/site';
+---
+
+<section class="section pricing" id="pricing">
+  <div class="wrap pricing-inner">
+    <p class="eyebrow eyebrow-light" data-reveal>Pricing</p>
+    <h2 class="display-sm dark-heading" data-reveal>
+      One website. One monthly price.<br />We handle the technical stuff.
+    </h2>
+
+    <div class="price-display" data-reveal>
+      <span class="price-currency">$</span><span class="price-figure">{SITE.price}</span><span
+        class="price-suffix">/month</span
+      >
+    </div>
+
+    <ul class="price-list" data-reveal>
+      {PRICE_FEATURES.map((feature) => <li>{feature}</li>)}
+    </ul>
+
+    <a href="#start" class="btn btn-primary btn-large" data-reveal>Start My Website</a>
+  </div>
+</section>

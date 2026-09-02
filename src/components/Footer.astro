@@ -1,0 +1,23 @@
+---
+import { SITE } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <a href="#top" class="logo">Building<span>IT</span></a>
+      <p>{SITE.tagline}</p>
+    </div>
+    <div class="footer-contact">
+      <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      <p>{SITE.location} &middot; {SITE.serviceArea}</p>
+      <p>{SITE.hours}</p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; {year} {SITE.name}. All rights reserved.</p>
+  </div>
+</footer>

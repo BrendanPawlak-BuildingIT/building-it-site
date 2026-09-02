@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import SectionDots from '../components/SectionDots.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import Problem from '../components/Problem.astro';
+import Solution from '../components/Solution.astro';
+import Included from '../components/Included.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
+import StartForm from '../components/StartForm.astro';
+import About from '../components/About.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Building IT | Managed Websites for Local Service Businesses in Kankakee, IL"
+  description="Building IT builds, hosts, and manages professional websites for local service businesses near Kankakee, Illinois. One monthly price. We handle the technical work. $200/month."
+>
+  <Header />
+  <SectionDots />
+
+  <main id="main">
+    <Hero />
+    <Marquee />
+    <Problem />
+    <Solution />
+    <Included />
+    <HowItWorks />
+    <Pricing />
+    <Faq />
+    <StartForm />
+    <About />
+    <FinalCta />
+  </main>
+
+  <Footer />
+</BaseLayout>

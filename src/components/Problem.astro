@@ -1,0 +1,31 @@
+---
+import { PROBLEMS } from '../data/site';
+---
+
+<section class="section problem" id="problem">
+  <div class="wrap problem-layout">
+    <div class="problem-intro" data-reveal>
+      <p class="eyebrow">The Problem</p>
+      <h2 class="display-sm">
+        Running a website isn&rsquo;t your job.<br /><em>Running your business is.</em>
+      </h2>
+      <p class="lead">
+        Most service business owners end up dealing with website problems they never signed up for.
+      </p>
+    </div>
+
+    <ul class="index-list">
+      {
+        PROBLEMS.map((problem, i) => (
+          <li data-reveal>
+            <span class="index-num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{problem.title}</h3>
+              <p>{problem.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

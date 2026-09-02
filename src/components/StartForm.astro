@@ -1,0 +1,99 @@
+---
+import { SITE } from '../data/site';
+---
+
+<section class="section start" id="start">
+  <div class="wrap start-layout">
+    <div class="start-copy" data-reveal>
+      <p class="eyebrow">Get Started</p>
+      <h2 class="display-sm">Tell us about<br />your business.</h2>
+      <p class="lead">Fill out the form and Building IT will reach out to start the process.</p>
+      <div class="start-meta">
+        <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </div>
+    </div>
+
+    <form class="start-form" id="start-form" data-reveal novalidate>
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="business">Business Name *</label>
+          <input type="text" id="business" name="business" required autocomplete="organization" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="business-type">Type of Business *</label>
+          <input
+            type="text"
+            id="business-type"
+            name="business-type"
+            placeholder="Roofing, HVAC…"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="website">Existing Website</label>
+          <input type="text" id="website" name="website" placeholder="yourbusiness.com" />
+        </div>
+      </div>
+
+      <div class="field field-full">
+        <label for="services">Main Services</label>
+        <input type="text" id="services" name="services" placeholder="Roof repairs, inspections…" />
+      </div>
+
+      <div class="field field-full">
+        <label for="details">What do you need? *</label>
+        <textarea
+          id="details"
+          name="details"
+          rows="3"
+          required
+          placeholder="Tell us a little about your business and what you're looking for."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-large form-submit">Start My Website</button>
+      <p class="form-note" id="form-note" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const startForm = document.getElementById('start-form') as HTMLFormElement | null;
+  const formNote = document.getElementById('form-note');
+
+  if (startForm && formNote) {
+    startForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!startForm.checkValidity()) {
+        startForm.reportValidity();
+        return;
+      }
+
+      // TODO: wire this up to a real submission endpoint (e.g. Formspree,
+      // a serverless function, or an email API) before launch.
+      formNote.textContent = 'Thanks — we received your info and will be in touch shortly.';
+      formNote.className = 'form-note success';
+      startForm.reset();
+    });
+  }
+</script>

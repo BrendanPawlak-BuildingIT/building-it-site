@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="glow" cx="18%" cy="12%" r="55%">
+      <stop offset="0%" stop-color="#F7323F" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#F7323F" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F7F8FA" stroke-opacity="0.06" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0B0D10" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <text x="80" y="120" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="40" fill="#F7F8FA">Building<tspan fill="#F7323F">IT</tspan></text>
+
+  <text x="80" y="270" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="60" fill="#F7F8FA">Your business handles business.</text>
+  <text x="80" y="340" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-style="italic" font-size="60" fill="#F7323F">We handle your website.</text>
+
+  <text x="80" y="410" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="26" fill="#A7ADB7">Managed websites for local service businesses near Kankakee, IL.</text>
+
+  <rect x="80" y="460" width="230" height="64" rx="32" fill="#F7323F" fill-opacity="0.14" />
+  <text x="195" y="500" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="28" fill="#F7323F">$200/month</text>
+</svg>

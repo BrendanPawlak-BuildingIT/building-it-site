@@ -1,0 +1,181 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/inter/wght-italic.css';
+import '../styles/global.css';
+import { SITE } from '../data/site';
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Relative path to a page-specific OG image, defaults to the site image. */
+  ogImage?: string;
+}
+
+const { title, description, ogImage = '/og-image.png' } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: SITE.name,
+  description:
+    'Managed website service for local service businesses — website design, hosting, maintenance, and technical support for one flat monthly price.',
+  url: SITE.url,
+  telephone: SITE.phoneHref.replace('tel:', '+1-'),
+  email: SITE.email,
+  priceRange: '$200/month',
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 41.1200607,
+      longitude: -87.8612966,
+    },
+    geoRadius: '80467', // ~50 miles in meters
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kankakee',
+    addressRegion: 'IL',
+    addressCountry: 'US',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+  makesOffer: {
+    '@type': 'Offer',
+    name: 'Managed Website',
+    price: '200',
+    priceCurrency: 'USD',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '200',
+      priceCurrency: 'USD',
+      unitCode: 'MON',
+    },
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0b0d10" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+
+    <script>
+      // Header background state on scroll
+      const siteHeader = document.getElementById('site-header');
+      if (siteHeader) {
+        const setScrolled = () => {
+          siteHeader.classList.toggle('scrolled', window.scrollY > 24);
+        };
+        setScrolled();
+        window.addEventListener('scroll', setScrolled, { passive: true });
+      }
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      if ('IntersectionObserver' in window && revealEls.length) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -60px 0px' },
+        );
+
+        revealEls.forEach((el, i) => {
+          if (el.closest('.hero')) {
+            el.style.transitionDelay = `${Math.min(i * 70, 350)}ms`;
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => el.classList.add('is-visible')),
+            );
+          } else {
+            revealObserver.observe(el);
+          }
+        });
+
+        // stagger list-based reveals
+        document
+          .querySelectorAll('.index-list, .service-list, .timeline, .price-list')
+          .forEach((list) => {
+            Array.from(list.children).forEach((child, i) => {
+              if (child instanceof HTMLElement && child.hasAttribute('data-reveal')) {
+                child.style.transitionDelay = `${Math.min(i * 80, 400)}ms`;
+              }
+            });
+          });
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // Section scroll-spy dots
+      const dots = document.querySelectorAll<HTMLAnchorElement>('.section-dots a');
+      const dotSections = Array.from(dots)
+        .map((dot) => document.querySelector(dot.getAttribute('href') ?? ''))
+        .filter((el): el is Element => el !== null);
+
+      if (dots.length && dotSections.length && 'IntersectionObserver' in window) {
+        const spyObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const id = `#${entry.target.id}`;
+                dots.forEach((dot) =>
+                  dot.classList.toggle('active', dot.getAttribute('href') === id),
+                );
+              }
+            });
+          },
+          { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
+        );
+        dotSections.forEach((section) => spyObserver.observe(section));
+      }
+    </script>
+  </body>
+</html>

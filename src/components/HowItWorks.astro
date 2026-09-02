@@ -1,0 +1,24 @@
+---
+import { STEPS } from '../data/site';
+---
+
+<section class="section how-it-works" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow eyebrow-light">How It Works</p>
+      <h2 class="display-sm dark-heading">A simple, four-step process.</h2>
+    </div>
+
+    <div class="timeline">
+      {
+        STEPS.map((step, i) => (
+          <div class="step" data-reveal>
+            <span class="step-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

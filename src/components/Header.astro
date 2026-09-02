@@ -1,0 +1,49 @@
+---
+import { NAV_LINKS } from '../data/site';
+---
+
+<header class="site-header" id="site-header">
+  <div class="nav-pill">
+    <a href="#top" class="logo">Building<span>IT</span></a>
+
+    <nav class="main-nav" id="main-nav">
+      {NAV_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <div class="header-actions">
+      <a href="#start" class="btn btn-primary btn-small">Start My Website</a>
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const siteHeader = document.getElementById('site-header');
+
+  function closeMobileNav() {
+    siteHeader?.classList.remove('nav-open');
+    navToggle?.classList.remove('open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+  }
+
+  if (navToggle && siteHeader) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteHeader.classList.toggle('nav-open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.querySelectorAll('.main-nav a').forEach((link) => {
+      link.addEventListener('click', closeMobileNav);
+    });
+  }
+</script>

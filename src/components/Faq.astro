@@ -1,0 +1,56 @@
+---
+import { FAQS } from '../data/site';
+---
+
+<section class="section faq" id="faq">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Frequently Asked Questions</p>
+      <h2 class="display-sm">Common questions</h2>
+    </div>
+
+    <div class="faq-list">
+      {
+        FAQS.map((faq, i) => {
+          const panelId = `faq-panel-${i}`;
+          const triggerId = `faq-trigger-${i}`;
+          return (
+            <div class="faq-item" data-reveal>
+              <button
+                class="faq-trigger"
+                id={triggerId}
+                aria-expanded="false"
+                aria-controls={panelId}
+              >
+                <span class="faq-q">{faq.question}</span>
+                <span class="faq-icon" aria-hidden="true" />
+              </button>
+              <div class="faq-panel-wrap" id={panelId} role="region" aria-labelledby={triggerId}>
+                <div class="faq-panel">
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger');
+    trigger?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach((openItem) => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+</script>

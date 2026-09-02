@@ -1,0 +1,26 @@
+---
+import { SERVICES } from '../data/site';
+---
+
+<section class="section included" id="included">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">What&rsquo;s Included</p>
+      <h2 class="display-sm">
+        Everything it takes to keep a<br />website running, handled for you.
+      </h2>
+    </div>
+
+    <ul class="service-list">
+      {
+        SERVICES.map((service, i) => (
+          <li data-reveal>
+            <span class="service-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

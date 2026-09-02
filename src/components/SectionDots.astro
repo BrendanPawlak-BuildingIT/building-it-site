@@ -1,0 +1,7 @@
+---
+import { SECTION_DOTS } from '../data/site';
+---
+
+<nav class="section-dots" aria-label="Section navigation">
+  {SECTION_DOTS.map((dot) => <a href={dot.href} data-dot aria-label={dot.label} />)}
+</nav>

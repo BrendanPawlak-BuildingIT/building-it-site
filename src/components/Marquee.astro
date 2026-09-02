@@ -1,0 +1,28 @@
+---
+import { INDUSTRIES } from '../data/site';
+---
+
+<section class="marquee-band" aria-label="Industries we serve">
+  <div class="marquee-track">
+    <div class="marquee-set">
+      {
+        INDUSTRIES.map((industry) => (
+          <>
+            <span>{industry}</span>
+            <span class="dot">&bull;</span>
+          </>
+        ))
+      }
+    </div>
+    <div class="marquee-set" aria-hidden="true">
+      {
+        INDUSTRIES.map((industry) => (
+          <>
+            <span>{industry}</span>
+            <span class="dot">&bull;</span>
+          </>
+        ))
+      }
+    </div>
+  </div>
+</section>
