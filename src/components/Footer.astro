@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../data/site';
+import { LEGAL_LINKS, SITE } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -7,7 +7,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <a href="#top" class="logo">Building<span>IT</span></a>
+      <a href="/#top" class="logo">Building<span>IT</span></a>
       <p>{SITE.tagline}</p>
     </div>
     <div class="footer-contact">
@@ -19,5 +19,15 @@ const year = new Date().getFullYear();
   </div>
   <div class="wrap footer-bottom">
     <p>&copy; {year} {SITE.name}. All rights reserved.</p>
+    <nav class="footer-legal" aria-label="Legal">
+      {
+        LEGAL_LINKS.map((link, i) => (
+          <>
+            <a href={link.href}>{link.label}</a>
+            {i < LEGAL_LINKS.length - 1 && <span aria-hidden="true">&middot;</span>}
+          </>
+        ))
+      }
+    </nav>
   </div>
 </footer>

@@ -16,6 +16,8 @@ export const SITE = {
   hours: 'Mon–Sat, 8:00 AM–6:00 PM',
   price: 200,
   priceDisplay: '$200',
+  /** Shared "last updated" date shown on the Privacy Policy and Terms of Service pages. */
+  legalUpdated: 'September 2, 2026',
 } as const;
 
 export interface NavLink {
@@ -24,11 +26,16 @@ export interface NavLink {
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { href: '#solution', label: 'What We Do' },
-  { href: '#included', label: "What's Included" },
-  { href: '#how-it-works', label: 'How It Works' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '/#solution', label: 'What We Do' },
+  { href: '/#included', label: "What's Included" },
+  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/#pricing', label: 'Pricing' },
+  { href: '/#faq', label: 'FAQ' },
+];
+
+export const LEGAL_LINKS: NavLink[] = [
+  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms of Service' },
 ];
 
 export interface SectionDot {

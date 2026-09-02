@@ -16,7 +16,9 @@ const INK = { r: 11, g: 13, b: 16, alpha: 1 };
  */
 async function makeAppIcon(size, outFile) {
   const iconSize = Math.round(size * 0.62);
-  const iconBuffer = await sharp(brandIcon).resize(iconSize, iconSize, { fit: 'inside' }).toBuffer();
+  const iconBuffer = await sharp(brandIcon)
+    .resize(iconSize, iconSize, { fit: 'inside' })
+    .toBuffer();
   const iconMeta = await sharp(iconBuffer).metadata();
 
   await sharp({
@@ -41,4 +43,6 @@ await makeAppIcon(192, path.join(publicDir, 'icon-192.png'));
 
 await sharp(ogSvg).resize(1200, 630).png().toFile(path.join(publicDir, 'og-image.png'));
 
-console.log('Generated favicon/app-icon set from brand-icon.png and the OG image from og-image.svg.');
+console.log(
+  'Generated favicon/app-icon set from brand-icon.png and the OG image from og-image.svg.',
+);

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="Terms of Service | Building IT"
+  description="Building IT's terms of service, including acceptable use, service terms, limitation of liability, and our SMS/text messaging program terms."
+  noindex
+>
+  <Header />
+
+  <main id="main">
+    <section class="legal-header">
+      <div class="wrap">
+        <p class="eyebrow">Legal</p>
+        <h1>Terms of Service</h1>
+        <p class="legal-updated">Last updated: {SITE.legalUpdated}</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap legal-content">
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          These Terms of Service ("Terms") govern your use of the website and services offered by
+          {SITE.name} ("Company," "we," "us," or "our"), a business based in Kankakee, Illinois. By accessing
+          our website, submitting a form, or engaging our services, you agree to be bound by these Terms.
+          If you do not agree, please do not use our website or services.
+        </p>
+
+        <h2>2. Description of Services</h2>
+        <p>
+          Company provides a managed website service for local service businesses: designing and
+          building a website, hosting it, maintaining it, and handling ongoing technical work —
+          domains, DNS, SSL, forms, and content updates — for a flat monthly fee. The specific scope
+          of any engagement is governed by the plan and details agreed to when you sign up, which
+          controls in the event of any conflict with these Terms.
+        </p>
+
+        <h2>3. Acceptable Use</h2>
+        <p>When using our website or services, you agree not to:</p>
+        <ul>
+          <li>Violate any applicable law or regulation;</li>
+          <li>
+            Interfere with or disrupt the security or performance of our website, network, or
+            systems;
+          </li>
+          <li>Attempt to gain unauthorized access to any account, system, or data; or</li>
+          <li>Use our website or services to transmit unlawful, harmful, or infringing content.</li>
+        </ul>
+
+        <h2>4. Text Messaging Program Terms</h2>
+        <p>
+          By providing your mobile phone number and opting in — whether through our website contact
+          form, over the phone, or in a signed service agreement — you agree to receive text
+          messages from Company related to appointment reminders, project updates, website launch
+          notifications, billing/account notices, and other service-related communications. Consent
+          to receive text messages is not a condition of purchasing any service.
+        </p>
+        <div class="legal-callout">
+          <p>Text Messaging Terms:</p>
+          <ul>
+            <li>Message frequency varies based on your account and project activity.</li>
+            <li>Message and data rates may apply.</li>
+            <li>
+              Reply <strong>STOP</strong> at any time to opt out of receiving text messages from us.
+            </li>
+            <li>
+              Reply <strong>HELP</strong> for help, or contact us at
+              <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a> or
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+            </li>
+            <li>
+              Carriers, including wireless carriers, are not liable for delayed or undelivered
+              messages.
+            </li>
+            <li>
+              <strong
+                >Mobile information and SMS opt-in consent are not sold or shared with third parties
+                for marketing or promotional purposes.</strong
+              > This information is used solely to deliver the text messaging program described above.
+            </li>
+          </ul>
+        </div>
+
+        <h2>5. Intellectual Property</h2>
+        <p>
+          All content on our website — including text, graphics, logos, and software — is owned by
+          or licensed to Company and is protected by intellectual property laws. You may not copy,
+          reproduce, or distribute our content without prior written permission, except as necessary
+          to use our website for its intended purpose. Business content, branding, and photos you
+          provide for your own website remain yours.
+        </p>
+
+        <h2>6. Disclaimers</h2>
+        <p>
+          Our website and its content are provided "as is" and "as available" without warranties of
+          any kind, express or implied, including warranties of merchantability, fitness for a
+          particular purpose, or non-infringement. We do not warrant that our website will be
+          uninterrupted, secure, or error-free.
+        </p>
+
+        <h2>7. Limitation of Liability</h2>
+        <p>
+          To the fullest extent permitted by law, Company will not be liable for any indirect,
+          incidental, special, consequential, or punitive damages, or any loss of profits, revenue,
+          data, or business opportunity, arising from your use of our website or services, even if
+          we have been advised of the possibility of such damages. Our total liability arising from
+          your use of our website or services is limited to the amount you paid us in the three (3)
+          months preceding the event giving rise to the claim.
+        </p>
+
+        <h2>8. Indemnification</h2>
+        <p>
+          You agree to indemnify and hold Company, its officers, employees, and agents harmless from
+          any claims, damages, losses, or expenses (including reasonable attorneys' fees) arising
+          from your misuse of our website or services or your violation of these Terms.
+        </p>
+
+        <h2>9. Third-Party Links and Services</h2>
+        <p>
+          Our website may reference or link to third-party websites, tools, or services. We do not
+          control and are not responsible for the content, accuracy, or practices of any third
+          party.
+        </p>
+
+        <h2>10. Governing Law and Dispute Resolution</h2>
+        <p>
+          These Terms are governed by the laws of the State of Illinois, without regard to its
+          conflict-of-law principles. Any dispute arising from these Terms or your use of our
+          website or services will be resolved in the state or federal courts located in Kankakee
+          County, Illinois.
+        </p>
+
+        <h2>11. Termination</h2>
+        <p>
+          We may suspend or terminate your access to our website at any time, without notice, for
+          conduct that we believe violates these Terms or is harmful to other users, us, or third
+          parties. Termination of an active managed website service is handled according to the plan
+          details agreed to when you signed up.
+        </p>
+
+        <h2>12. Changes to These Terms</h2>
+        <p>
+          We may update these Terms from time to time. Changes will be posted on this page with an
+          updated effective date. Your continued use of our website or services after changes are
+          posted constitutes acceptance of the revised Terms.
+        </p>
+
+        <h2>13. Contact Us</h2>
+        <p>If you have questions about these Terms, contact us at:</p>
+        <p>
+          <strong>{SITE.name}</strong><br />
+          {SITE.location}<br />
+          Phone: <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a><br />
+          Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
