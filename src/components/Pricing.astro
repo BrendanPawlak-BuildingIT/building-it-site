@@ -1,11 +1,5 @@
 ---
-import {
-  PREPAY_DISCOUNT_PERCENT,
-  PREPAY_MONTHS,
-  PREPAY_UPFRONT_TOTAL,
-  PRICE_FEATURES,
-  SITE,
-} from '../data/site';
+import { PREPAY_DISCOUNT_PERCENT, PREPAY_MONTHS, PRICE_FEATURES, SITE } from '../data/site';
 ---
 
 <section class="section pricing" id="pricing">
@@ -29,10 +23,9 @@ import {
     <a href="#start" class="btn btn-primary btn-large" data-reveal>Start My Website</a>
 
     <p class="price-build-note" data-reveal>
-      Need a new website or a rebuild? That costs extra and depends on what you need. Pay {
-        PREPAY_MONTHS
-      } months of hosting upfront (${PREPAY_UPFRONT_TOTAL}) and get {PREPAY_DISCOUNT_PERCENT}% off
-      the build — up to ${PREPAY_UPFRONT_TOTAL} off.
+      Need a new website or a rebuild? That's priced separately. {PREPAY_MONTHS} months upfront is {
+        PREPAY_DISCOUNT_PERCENT
+      }% off your website project.
     </p>
   </div>
 </section>
